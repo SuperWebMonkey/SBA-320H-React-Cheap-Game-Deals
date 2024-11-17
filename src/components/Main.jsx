@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 const api_url = "https://digimon-api.vercel.app/api/digimon";
@@ -15,6 +15,8 @@ function Main() {
   const [loadDigimons, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [filterDigi, setFilter] = useState([]);
+  const [count, setCount] = useState(0);
+  const prevCountRef = useRef();
 
   // Use effect for getting the digi api
   useEffect(() => {
@@ -30,6 +32,10 @@ function Main() {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    prevCountRef.current = count;
+  }, [count]);
 
   // Search Function
   const searchFeature = (e) => {
@@ -87,13 +93,7 @@ function Main() {
                   className="add-button"
                   // onClick={() => handleAddToFavorites(digimon)}
                 >
-                  Add
-                </button>
-                <button
-                  className="trash-button"
-                  // onClick={() => handleRemoveFromFavorites(digimon)}
-                >
-                  Trash
+                  Add To Cart
                 </button>
               </div>
             </div>
