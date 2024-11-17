@@ -7,6 +7,9 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
+import { Route, Routes } from "react-router-dom";
+import Header from "./Header.jsx";
+import Cart from "./Cart.jsx";
 
 const api_url = "https://digimon-api.vercel.app/api/digimon";
 
@@ -16,6 +19,7 @@ function Main() {
   const [search, setSearch] = useState("");
   const [filterDigi, setFilter] = useState([]);
   const [count, setCount] = useState(0);
+  const [cart, setCart] = useState([]);
   const prevCountRef = useRef();
 
   // Use effect for getting the digi api
@@ -39,6 +43,7 @@ function Main() {
 
   // Search Function
   const searchFeature = (e) => {
+    e.preventDefault();
     const query = e.target.value.toLowerCase();
     // console.log(typeof query, query);
     setSearch(query);
@@ -61,46 +66,99 @@ function Main() {
     setFilter(filteredList);
   };
 
+  // Add item to cart
+  const addDigimon = (digi) => {
+    const digiInCart = cart.find((item) => {
+      item.name === digi.name;
+    });
+
+    checkInCart(digiInCart, digi);
+  };
+
+  const checkInCart = (inCart, digi) => {
+    if (inCart) {
+      setCart(
+        cart.map((item) =>
+          item.name === digi.name ? { ...item, count: item.count + 1 } : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...digi, count: 1 }]);
+    }
+  };
+
+  const removeDigimon = (digi) => {
+    const digiExist = cart.find((item) => {
+      item.name === digi.name;
+    });
+
+    removeFromCart(digiExist, digi);
+  };
+
+  const removeFromCart = (digiExist, digi) => {
+    if (digiExist && digiExist.count > 1) {
+      setCart(
+        cart.map((item) =>
+          item.name === digi.name ? { ...item, count: item.count - 1 } : item
+        )
+      );
+    } else {
+      setCart(cart.filter((item) => item.name !== digi.name));
+    }
+  };
+
+  const getCount = () => {
+    return cart.reduce((sum, digi) => {
+      sum += digi.count;
+    }, 0);
+  };
+
   return (
-    <div id="main-section">
-      {/* Shop Title and About section */}
-      <h1 id="digimon-world-title">Digimon World</h1>
-      <p id="about-p">
-        Welcome to Digi World. A place where you can find and select your
-        Digimon
-      </p>
+    <>
+      {/* <Header count={getCount()} /> */}
+      <div id="main-section">
+        {/* Shop Title and About section */}
+        <h1 id="digimon-world-title">Digimon World</h1>
+        <p id="about-p">
+          Welcome to Digi World. A place where you can find and select your
+          Digimon
+        </p>
 
-      {/* Search Feature */}
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="search for a digimon"
-        value={search}
-        onChange={searchFeature}
-      />
+        {/* Search Feature */}
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="search for a digimon"
+          value={search}
+          onChange={searchFeature}
+        />
 
-      {loadDigimons ? (
-        <p>Loading all digimons...</p>
-      ) : (
-        <div className="digimons-list">
-          {filterDigi.map((digimon, i) => (
-            <div key={i} className="digimon-box">
-              <img src={digimon.img} alt={digimon.name} />
-              <h2>{digimon.name}</h2>
-              <p>Level: {digimon.level}</p>
-              <div className="button-group">
-                <button
-                  className="add-button"
-                  // onClick={() => handleAddToFavorites(digimon)}
-                >
-                  Add To Cart
-                </button>
+        {loadDigimons ? (
+          <p>Loading all digimons...</p>
+        ) : (
+          <div className="digimons-list">
+            {filterDigi.map((digimon, i) => (
+              <div key={i} className="digimon-box">
+                <img src={digimon.img} alt={digimon.name} />
+                <h2>{digimon.name}</h2>
+                <p>Level: {digimon.level}</p>
+                <div className="button-group">
+                  <button
+                    className="add-button"
+                    onClick={() => addDigimon(digimon)}
+                  >
+                    Add To Cart
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+            ))}
+          </div>
+        )}
+        {/* <Route path="/cart">
+          <Cart cartItems={cart} removeItem={removeDigimon} />
+        </Route> */}
+      </div>
+    </>
   );
 }
 

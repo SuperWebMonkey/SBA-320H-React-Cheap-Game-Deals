@@ -1,8 +1,8 @@
 import Navbar from "./Navbar.jsx";
-function Header() {
+function Header({ count }) {
   return (
     <>
-      <Navbar />
+      <Navbar itemCount={count} />
     </>
   );
 }

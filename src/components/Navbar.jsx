@@ -1,4 +1,13 @@
-function Navbar() {
+/**
+ *
+ * Navbar section that contain links to other pages
+ *
+ */
+
+import { Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+function Navbar({ itemCount }) {
   return (
     // <!-- Navbar -->
     <section id="navbar">
@@ -26,7 +35,7 @@ function Navbar() {
         login
       </a>
       <a href="#" className="page wishlist" style="float: right">
-        wishlist <i className="fas fa-heart"></i>
+        Cart ({itemCount}) <i className="fas fa-heart"></i>
       </a>
     </section>
   );
