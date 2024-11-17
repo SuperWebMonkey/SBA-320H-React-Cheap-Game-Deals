@@ -2,15 +2,15 @@ function Footer() {
   return (
     <footer id="my-footer">
       <hr />
-      <div class="footer-content">
-        <a href="#" class="footer-icon" target="_self">
-          <i class="fab fa-github"></i>{" "}
+      <div className="footer-content">
+        <a href="#" className="footer-icon" target="_self">
+          <i className="fab fa-github"></i>{" "}
         </a>
-        <a href="#" class="footer-icon" target="_self">
-          <i class="fab fa-linkedin"></i>
+        <a href="#" className="footer-icon" target="_self">
+          <i className="fab fa-linkedin"></i>
         </a>
-        <a href="#" class="footer-icon" target="_self">
-          <i class="fab fa-twitter"></i>
+        <a href="#" className="footer-icon" target="_self">
+          <i className="fab fa-twitter"></i>
         </a>
       </div>
       <div id="copy-right">
