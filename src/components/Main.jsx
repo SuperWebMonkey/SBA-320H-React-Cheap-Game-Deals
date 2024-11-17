@@ -82,6 +82,20 @@ function Main() {
               <img src={digimon.img} alt={digimon.name} />
               <h2>{digimon.name}</h2>
               <p>Level: {digimon.level}</p>
+              <div className="button-group">
+                <button
+                  className="add-button"
+                  // onClick={() => handleAddToFavorites(digimon)}
+                >
+                  Add
+                </button>
+                <button
+                  className="trash-button"
+                  // onClick={() => handleRemoveFromFavorites(digimon)}
+                >
+                  Trash
+                </button>
+              </div>
             </div>
           ))}
         </div>
