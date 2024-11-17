@@ -22,7 +22,7 @@ function Main() {
 
   return (
     <div id="main-section">
-      <h1>Digimons</h1>
+      <h1>Digimon World</h1>
       <p>
         Welcome to Digi World. A place where you can find and select your
         Digimon

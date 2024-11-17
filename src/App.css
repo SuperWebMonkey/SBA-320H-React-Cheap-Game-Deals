@@ -84,8 +84,14 @@ p {
 
 #main-section {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 20px;
 }
 
 .digimon-box {
