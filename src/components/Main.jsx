@@ -34,24 +34,38 @@ function Main() {
   // Search Function
   const searchFeature = (e) => {
     const query = e.target.value.toLowerCase();
+    // console.log(typeof query, query);
     setSearch(query);
 
     const filteredList = digimons.filter((digi) => {
-      digi.name.toLowerCase().includes(query) ||
-        digi.level.toLowerCase().includes(query);
+      const nameMatch = digi.name.toLowerCase().includes(query);
+      const levelMatch = digi.level.toLowerCase().includes(query);
+
+      // console.log(`Searching for: ${query}`);
+      // console.log(
+      //   `Checking Digimon: ${digi.name.toLowerCase()} (name match: ${nameMatch}, level match: ${levelMatch})`
+      // );
+
+      return nameMatch || levelMatch;
     });
+
+    // console.log(digimons);
+
+    // console.log(filteredList);
 
     setFilter(filteredList);
   };
 
   return (
     <div id="main-section">
+      {/* Shop Title and About section */}
       <h1 id="digimon-world-title">Digimon World</h1>
       <p id="about-p">
         Welcome to Digi World. A place where you can find and select your
         Digimon
       </p>
 
+      {/* Search Feature */}
       <input
         type="text"
         className="search-bar"
@@ -64,7 +78,7 @@ function Main() {
         <p>Loading all digimons...</p>
       ) : (
         <div className="digimons-list">
-          {digimons.map((digimon, i) => (
+          {filterDigi.map((digimon, i) => (
             <div key={i} className="digimon-box">
               <img src={digimon.img} alt={digimon.name} />
               <h2>{digimon.name}</h2>
