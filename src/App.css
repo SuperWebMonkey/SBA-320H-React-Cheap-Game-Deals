@@ -83,6 +83,9 @@ p {
   ----- Main Section - Digimon Card Display ------
 */
 
+/* Search Bar */
+
+/* Digimon Items and Cards */
 #main-section {
   display: flex;
   flex-direction: column;
