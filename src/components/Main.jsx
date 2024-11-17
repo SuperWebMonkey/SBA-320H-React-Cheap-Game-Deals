@@ -50,7 +50,6 @@ function Main() {
     });
 
     // console.log(digimons);
-
     // console.log(filteredList);
 
     setFilter(filteredList);
