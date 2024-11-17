@@ -21,7 +21,7 @@ function Main() {
   }, []);
 
   return (
-    <div id="main-container">
+    <div id="main-section">
       <h1>Digimons</h1>
       <p>
         Welcome to Digi World. A place where you can find and select your
