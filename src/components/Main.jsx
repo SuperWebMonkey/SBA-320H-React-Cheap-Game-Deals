@@ -22,8 +22,8 @@ function Main() {
 
   return (
     <div id="main-section">
-      <h1>Digimon World</h1>
-      <p>
+      <h1 id="digimon-world-title">Digimon World</h1>
+      <p id="about-p">
         Welcome to Digi World. A place where you can find and select your
         Digimon
       </p>
