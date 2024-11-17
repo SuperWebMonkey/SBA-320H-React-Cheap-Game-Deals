@@ -8,7 +8,7 @@ function Navbar() {
         </a>
       </div>
       <a href="./" class="page tech-shop">
-        Geek Central
+        Digi World
       </a>
       <a href="./" class="page home-page">
         Home
@@ -23,7 +23,7 @@ function Navbar() {
         Admin
       </a>
       <a href="#" class="page login" style="float: right">
-        login{" "}
+        login
       </a>
       <a href="#" class="page wishlist" style="float: right">
         wishlist <i class="fas fa-heart"></i>

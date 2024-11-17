@@ -1,6 +1,6 @@
-# Geek Central React project
+# Digi World React project
 
-Video game, anime, and tech store that was built with React.
+Website that shows digimon information
 
 # requirements
 
@@ -15,7 +15,7 @@ Video game, anime, and tech store that was built with React.
 1. git clone https://github.com/SuperWebMonkey/SBA-319-MongoDB-DB-App.git
 2. cd SBA-319-MongoDB-DB-App
 3. npm install
-4. npm start dev
+4. npm run dev
 
 ## Features
 
