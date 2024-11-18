@@ -7,20 +7,20 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-import { Route, Routes } from "react-router-dom";
+import { Router, Route, Routes } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Cart from "./Cart.jsx";
 
 const api_url = "https://digimon-api.vercel.app/api/digimon";
 
-function Main() {
+function Main({ cart, addDigimon, removeDigimon }) {
   const [digimons, setDigimons] = useState([]);
   const [loadDigimons, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [filterDigi, setFilter] = useState([]);
   const [count, setCount] = useState(0);
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const prevCountRef = useRef();
 
   // Use effect for getting the digi api
@@ -67,62 +67,61 @@ function Main() {
     setFilter(filteredList);
   };
 
-  // Add item to cart
-  const addDigimon = (digi) => {
-    const digiInCart = cart.find((item) => {
-      item.name === digi.name;
-    });
+  // // Add item to cart
+  // const addDigimon = (digi) => {
+  //   const digiInCart = cart.find((item) => {
+  //     item.name === digi.name;
+  //   });
 
-    checkInCart(digiInCart, digi);
-  };
+  //   checkInCart(digiInCart, digi);
+  // };
 
-  const checkInCart = (inCart, digi) => {
-    if (inCart) {
-      setCart(
-        cart.map((item) =>
-          item.name === digi.name ? { ...item, count: item.count + 1 } : item
-        )
-      );
-    } else {
-      setCart([...cart, { ...digi, count: 1 }]);
-    }
-  };
+  // const checkInCart = (inCart, digi) => {
+  //   if (inCart) {
+  //     setCart(
+  //       cart.map((item) =>
+  //         item.name === digi.name ? { ...item, count: item.count + 1 } : item
+  //       )
+  //     );
+  //   } else {
+  //     setCart([...cart, { ...digi, count: 1 }]);
+  //   }
+  // };
 
-  const removeDigimon = (digi) => {
-    const digiExist = cart.find((item) => {
-      item.name === digi.name;
-    });
+  // const removeDigimon = (digi) => {
+  //   const digiExist = cart.find((item) => {
+  //     item.name === digi.name;
+  //   });
 
-    removeFromCart(digiExist, digi);
-  };
+  //   removeFromCart(digiExist, digi);
+  // };
 
-  const removeFromCart = (digiExist, digi) => {
-    if (digiExist && digiExist.count > 1) {
-      setCart(
-        cart.map((item) =>
-          item.name === digi.name ? { ...item, count: item.count - 1 } : item
-        )
-      );
-    } else {
-      setCart(cart.filter((item) => item.name !== digi.name));
-    }
-  };
+  // const removeFromCart = (digiExist, digi) => {
+  //   if (digiExist && digiExist.count > 1) {
+  //     setCart(
+  //       cart.map((item) =>
+  //         item.name === digi.name ? { ...item, count: item.count - 1 } : item
+  //       )
+  //     );
+  //   } else {
+  //     setCart(cart.filter((item) => item.name !== digi.name));
+  //   }
+  // };
 
-  const getCount = () => {
-    return cart.reduce((sum, digi) => {
-      sum += digi.count;
-    }, 0);
-  };
+  // const getCount = () => {
+  //   return cart.reduce((sum, digi) => {
+  //     sum += digi.count;
+  //   }, 0);
+  // };
 
   return (
     <>
-      {/* <Header count={getCount()} /> */}
       <div id="main-section">
         {/* Shop Title and About section */}
         <h1 id="digimon-world-title">Digimon World</h1>
         <p id="about-p">
-          Welcome to Digi World. A place where you can find and select your
-          Digimon
+          Welcome to Digi World. A place where you can find and select your Digi
+          Pal.
         </p>
 
         {/* Search Feature */}
@@ -155,11 +154,7 @@ function Main() {
             ))}
           </div>
         )}
-        {/* <Route path="/cart">
-          <Cart cartItems={cart} removeItem={removeDigimon} />
-        </Route> */}
       </div>
-      <Footer />
     </>
   );
 }

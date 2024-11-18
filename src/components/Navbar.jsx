@@ -8,36 +8,28 @@ import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Navbar({ itemCount }) {
+  const linkStyle = {
+    float: "right",
+  };
+
   return (
     // <!-- Navbar -->
-    <section id="navbar">
+    <div id="navbar">
       <div className="logo">
-        <a href="#">
-          <img id="logo-pic" src="/img/negative-man-pic.png" alt="Logo" />
-        </a>
+        <Link to="/">
+          <img id="logo-pic" src="/img/digimon-log.png" alt="digimon Logo" />
+        </Link>
       </div>
-      <a href="./" className="page tech-shop">
+      <Link to="/" className="page tech-shop">
         Digi World
-      </a>
-      <a href="./" className="page home-page">
-        Home
-      </a>
-      <a href="./about" className="page about-page">
-        About
-      </a>
-      <a href="./contact" className="page contact-page">
-        Contact
-      </a>
-      <a href="./admin" className="page admin-page">
-        Admin
-      </a>
-      <a href="#" className="page login" style="float: right">
+      </Link>
+      <Link to="#" className="page login" style={linkStyle}>
         login
-      </a>
-      <a href="#" className="page wishlist" style="float: right">
+      </Link>
+      <Link to="/cart" className="page wishlist" style={linkStyle}>
         Cart ({itemCount}) <i className="fas fa-heart"></i>
-      </a>
-    </section>
+      </Link>
+    </div>
   );
 }
 
