@@ -5,8 +5,8 @@ them to their cart.
 
 ## Live Site
 
-You can view the live version of the site at:  
-[Live Site Link](put site here)
+You can view the live version of the site from netlify at:  
+[Live Site Link](https://inquisitive-syrniki-febb6b.netlify.app/)
 
 # requirements
 
