@@ -1,12 +1,12 @@
-# Digi World React project
+ls# Digi World React project
 
 Website that a list of digimons. Users can search for specific digimons and add
 them to their cart.
 
 ## Live Site
 
-You can view the live version of the site at:  
-[Live Site Link](put site here)
+You can view the live version of the site at netlify:  
+[Live Site Link](https://inquisitive-syrniki-febb6b.netlify.app/)
 
 # requirements
 
