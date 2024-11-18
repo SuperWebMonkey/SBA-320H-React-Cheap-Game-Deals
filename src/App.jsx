@@ -27,9 +27,7 @@ function App() {
       );
     }
 
-    const digiInCart = cart.find((item) => {
-      item.name.toLowerCase() === digi.name.toLowerCase();
-    });
+    let digiInCart = cart.find((item) => item.name === digi.name);
 
     console.log("in cart", digiInCart);
 
@@ -52,9 +50,7 @@ function App() {
   };
 
   const removeDigimon = (digi) => {
-    const digiExist = cart.find((item) => {
-      item.name === digi.name;
-    });
+    const digiExist = cart.find((item) => item.name === digi.name);
 
     removeFromCart(digiExist, digi);
   };
