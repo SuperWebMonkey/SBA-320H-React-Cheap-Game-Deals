@@ -1,4 +1,4 @@
-ls# Digi World React project
+## Digi World React project
 
 Website that a list of digimons. Users can search for specific digimons and add
 them to their cart.
