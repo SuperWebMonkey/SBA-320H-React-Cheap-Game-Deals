@@ -45,3 +45,8 @@ You can view the live version of the site at netlify:
 
 - **Other Tools & Libraries:**
   - Git (Version control)
+
+## Issues that need to be fixed
+
+- Style cart page
+- Fix the item counter
