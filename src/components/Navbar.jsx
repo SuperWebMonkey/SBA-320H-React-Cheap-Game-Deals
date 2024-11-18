@@ -6,6 +6,7 @@
 
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
+import logo from "../assets/img/digimon-logo.png";
 
 function Navbar({ itemCount }) {
   const linkStyle = {
@@ -17,7 +18,7 @@ function Navbar({ itemCount }) {
     <div id="navbar">
       <div className="logo">
         <Link to="/">
-          <img id="logo-pic" src="/img/digimon-log.png" alt="digimon Logo" />
+          <img id="logo-pic" src={logo} alt="digimon Logo" />
         </Link>
       </div>
       <Link to="/" className="page tech-shop">
